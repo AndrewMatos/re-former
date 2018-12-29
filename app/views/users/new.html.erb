@@ -1,0 +1,48 @@
+<!--
+	Normal form:
+
+<form accept-charset="UTF-8" action="/users" method="POST">
+
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+
+ Username:<input type="text" name="user[username]" value="">
+ <br>
+ Email:<input type="text" name="user[email]" value="">
+ <br>
+ Password:<input type="password" name="user[password_digest]" value="">
+  <br>
+  <input type="submit" value="Submit">
+</form>
+
+-->
+
+<!-- form_tag method helper
+
+<%= form_tag("/users", method: "POST") do %>
+ <%= label_tag(:username, "Username:")%>
+ <%= text_field_tag(:username) %>
+ <br>
+
+ <%= label_tag(:email, "Email:") %>
+ <%= text_field_tag(:email)%>
+ <br>
+ <%= label_tag(:password_digest, "Password:") %>
+ <%= password_field_tag(:password_digest) %>
+ <br>
+ <%= submit_tag("Submit!!!") %>
+<% end %>
+
+-->
+
+<%= form_for @user, url: {action: "create"}, html: {class:  "form_with_for"} do |f| %>
+   Username:
+   <%=f.text_field :username, value: "Your user name here"%>
+   <br>
+   Email:
+   <%=f.text_field :email, value: "example@example.com"%>
+   <br>
+   Password:
+   <%=f.password_field :password_digest %>
+   <%= f.submit "Submit!!" %>
+<% end %>
